@@ -11,6 +11,8 @@ description: > # your text below (remove <br> elements if you don't need line br
   <br><br>
   Here's my substack, <a href="https://tripeblog.substack.com/">TRIPE</a>.
 
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://yourusername.github.io"
 google_analytics: G-P69D6S5NR2 # your Google Analytics tracking ID here
 
 markdown: kramdown
