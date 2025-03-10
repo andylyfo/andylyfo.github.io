@@ -8,25 +8,22 @@ body {
   padding: 20px;
 }
 
-/* Links in terminal green */
 a {
   color: #00ffe1;
   text-decoration: underline;
 }
 
 a:hover {
-  color: #00ffe1; /* Slightly darker green when hovering */
+  color: #00ffe1;
   text-decoration: none;
 }
 
-/* Headings with terminal-style formatting */
 h1, h2, h3, h4, h5, h6 {
   color: #00ff00;
-  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
+  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
   font-weight: bold;
 }
 
-/* Optional: Add a subtle terminal glow effect */
 .container {
   text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
 }
