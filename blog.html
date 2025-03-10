@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog - Andy Lyford</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">home</a> |
+            <a href="blog.html">blog</a>
+        </nav>
+    </header>
+    <h1>blog</h1>
+    <p><i>oh jeez a real black mirror</i></p>
+    <div id="blog-content"></div>
+    <script>
+        // Function to load and display markdown posts
+        async function loadPosts() {
+            const blogContent = document.getElementById('blog-content');
+
+            // Fetch the list of markdown files in the posts directory
+            const response = await fetch('/_posts');
+            const files = await response.json();
+
+
+            // Fetch the content of each markdown post and parse the publish date
+            const posts = await Promise.all(files.map(async file => {
+                const res = await fetch(`/_posts/${file}`);
+                const text = await res.text();
+                const publishDate = text.match(/date: (.*)/)[1];
+                return { content: text, date: new Date(publishDate) };
+            }));
+
+            // Sort posts by publish date in descending order
+            posts.sort((a, b) => b.date - a.date);
+
+            // Display each post
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.innerHTML = marked.parse(post.content);
+                blogContent.appendChild(postElement);
+            });
+        }
+
+        // Load posts when the page loads
+        window.onload = loadPosts;
+    </script>
+</body>
+</html>
