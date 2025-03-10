@@ -1,0 +1,48 @@
+title: Andy Lyford # your name (or website title) here
+logo: "/images/headshot.jpeg?raw=true" # your photo (or logo) here
+description: > # your text below (remove <br> elements if you don't need line breaks)
+
+  <br><br>
+  🏴‍☠️ Bristol based.
+  <br><br>
+  Junior Software Developer at One Big Cirle. Writer at TRIPE. Self-taught programmer.
+  <br><br>
+  London Marathon 2024 Finisher. <a href="https://www.justgiving.com/fundraising/andylyfo">£2100+ raised for RNID</a>, the UK's leading deaf charity.
+  <br><br>
+  Here's my substack, <a href="https://tripeblog.substack.com/">TRIPE</a>.
+
+google_analytics: G-P69D6S5NR2 # your Google Analytics tracking ID here
+
+markdown: kramdown
+theme: minima # You can use 'minima' theme or customize your own
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Blog settings
+permalink: /blog/:year/:month/:day/:title/
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+# Default front matter settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
