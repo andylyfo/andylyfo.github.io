@@ -2,7 +2,7 @@
 body {
   background-color: #000000;
   color: #00ff00; /* Bright green text */
-  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
+  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
   line-height: 1.6;
   margin: 0;
   padding: 20px;
