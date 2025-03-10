@@ -1,0 +1,32 @@
+/* Terminal-like theme */
+body {
+  background-color: #000000;
+  color: #00ff00; /* Bright green text */
+  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Links in terminal green */
+a {
+  color: #00ffe1;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #00ffe1; /* Slightly darker green when hovering */
+  text-decoration: none;
+}
+
+/* Headings with terminal-style formatting */
+h1, h2, h3, h4, h5, h6 {
+  color: #00ff00;
+  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
+  font-weight: bold;
+}
+
+/* Optional: Add a subtle terminal glow effect */
+.container {
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
