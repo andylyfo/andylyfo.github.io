@@ -1,26 +1,26 @@
 /* Terminal-like theme */
 body {
-  background-color: #000000;
-  color: #00ff00; /* Bright green text */
-  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
   line-height: 1.6;
   margin: 0;
   padding: 20px;
 }
 
 a {
-  color: #00ffe1;
+  color: #000000;
   text-decoration: underline;
 }
 
 a:hover {
-  color: #00ffe1;
+  color: #009900;
   text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #00ff00;
-  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  color: #000000;
+  font-family: 'JetBrains Mono', 'Courier New', 'Consolas', monospace;
   font-weight: bold;
 }
 
