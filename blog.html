@@ -2,51 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Andy Lyford</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">home</a> |
-            <a href="blog.html">blog</a>
-        </nav>
-    </header>
-    <h1>blog</h1>
-    <p><i>there's nothing here. yet.</i></p>
-    <div id="blog-content"></div>
+    <div class="container">
+        <header>
+            <nav>
+                [ <a href="index.html">about</a> ]
+                [ <a href="blog.html" class="active">words</a> ]
+                [ <a href="https://github.com/andylyfo">GitHub</a> ]
+                [ <a href="https://www.linkedin.com/in/andylyfo/">LinkedIn</a> ]
+            </nav>
+        </header>
+
+        <h1>words</h1>
+
+        <div id="blog-content">
+            <div class="project">
+                <h3><a href="#" onclick="loadPost('smash-burgers')" style="color: #003366; text-decoration: none;">TRIPE_01: Smash Burgers</a></h3>
+                <div class="project-tech">Posted: October 21, 2023</div>
+                <p>Hello, welcome to the first instalment of TRIPE. How exciting. Here's a piece about smash burgers from home...</p>
+                <a href="#" onclick="loadPost('smash-burgers')" class="btn">Read Article</a>
+            </div>
+        </div>
+
+        <!-- Full post view (hidden by default) -->
+        <div id="post-content" class="hidden">
+            <div class="post-header">
+                <a href="blog.html" class="back-link">← Back to blog</a>
+            </div>
+            <div id="post-body"></div>
+        </div>
+    </div>
+
     <script>
-        // Function to load and display markdown posts
-        async function loadPosts() {
-            const blogContent = document.getElementById('blog-content');
+        async function loadPost(postSlug) {
+            try {
+                const response = await fetch(`posts/${postSlug}.md`);
+                if (!response.ok) {
+                    throw new Error('Post not found');
+                }
 
-            // Fetch the list of markdown files in the posts directory
-            const response = await fetch('/_posts');
-            const files = await response.json();
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
 
+                // Hide blog list, show post content
+                document.getElementById('blog-content').classList.add('hidden');
+                document.getElementById('post-content').classList.remove('hidden');
+                document.getElementById('post-body').innerHTML = html;
 
-            // Fetch the content of each markdown post and parse the publish date
-            const posts = await Promise.all(files.map(async file => {
-                const res = await fetch(`/_posts/${file}`);
-                const text = await res.text();
-                const publishDate = text.match(/date: (.*)/)[1];
-                return { content: text, date: new Date(publishDate) };
-            }));
+                // Update page title
+                document.title = `${postSlug.replace('-', ' ')} - Andy Lyford`;
 
-            // Sort posts by publish date in descending order
-            posts.sort((a, b) => b.date - a.date);
-
-            // Display each post
-            posts.forEach(post => {
-                const postElement = document.createElement('div');
-                postElement.innerHTML = marked.parse(post.content);
-                blogContent.appendChild(postElement);
-            });
+            } catch (error) {
+                alert('Sorry, this blog post is not available yet.');
+            }
         }
 
-        // Load posts when the page loads
-        window.onload = loadPosts;
+        // Handle browser back button
+        window.addEventListener('popstate', function() {
+            document.getElementById('blog-content').classList.remove('hidden');
+            document.getElementById('post-content').classList.add('hidden');
+            document.title = 'Blog - Andy Lyford';
+        });
     </script>
 </body>
 </html>
