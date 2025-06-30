@@ -178,19 +178,6 @@ em {
     background-color: #ffffff;
 }
 
-.calendar-placeholder {
-    text-align: center;
-    color: #666666;
-    padding: 20px;
-    border: 1px dashed #999999;
-    font-style: italic;
-    font-family: "Lucida Console", "Courier New", "Monaco", monospace;
-}
-
-.calendar-placeholder p {
-    margin: 5px 0;
-}
-
 hr {
     border: none;
     border-top: 1px solid #003366;
@@ -258,4 +245,23 @@ hr {
     margin-left: 0;
     color: #666666;
     font-style: italic;
+}
+
+
+.github-calendar-container {
+  background-color: #0a0a0a;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.github-calendar-container iframe {
+  display: block;
+  max-width: 100%;
+}
+
+.github-profile-link {
+  text-align: right;
+  font-size: 0.9em;
+  margin-top: 5px;
 }
